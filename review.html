@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-latest.min.js"></script>
+    <script>
+    $(document).ready(function(){
+      function asynch()
+      {
+        var title = $('#bookname').val();
+        var review_box = $('#reviewbox').val();
+        $('#review_button').onclick(function(){
+          $.ajax({
+            url: "/review",
+            type: "post",
+            data: { bookname: title, reviewbox: review_box }
+
+          });
+        });
+      }
+    });
+    </script>
+    <title>Search Page</title>
+    <style>
+      html, body {
+      background: url(https://assets.entrepreneur.com/content/3x2/2000/20191219170611-GettyImages-1152794789.jpeg);
+      background size: 100% 100%;
+      }
+      h1, h3, h4, h6 {
+        text-align: center;
+        font-style: italic;
+      }
+      #container {
+        text-align: center;
+      }
+
+      ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #333;
+}
+
+li {
+  float: left;
+}
+
+li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-style: italic;
+}
+
+li a:hover {
+  background-color: #111;
+}
+table.center {
+  text-align: center;
+}
+textarea {
+display: block;
+margin-left: auto;
+margin-right: auto;
+}
+
+ul1 {
+  display: table;
+  margin: 0 auto;
+}
+
+      </style>
+  </head>
+  <body>
+    <ul>
+
+  <form action="/review" method="post">
+  <li><a href="/search">Book Search</a></li>
+  <li><a href="/logout">Logout</a></li>
+</ul>
+    <div id="container" class="main-block">
+      <h1>Book's Reviews</h1><br><br><br>
+          <h4>ISBN:   {{isbn}}</h4>
+          <h4>Title:  {{title}}</h4>
+          <h4>Author: {{author}}</h4>
+          <h4>Year:   {{year}}</h4>
+    </div><br><br>
+    <h6>{{title}}'s reviews</h6<br>
+    <ul1><br>
+    {% for book, name in reviews_names.items()%}
+    <li>"{{book}}"</li>
+    <ul1>- {{name}}</ul1>
+    {% endfor %}
+    </ul1>
+    <br><br>
+    <h6>Book's name:</h6><textarea id="bookname" name="bookname" rows="1" cols="25">{{title}}</textarea><br>
+    <textarea id="reviewbox" name="reviewbox" rows="4" cols="50"></textarea>
+    <h6 style="color: #DC143C;">{{name}}</h6>
+    <br><br>
+    <div style="text-align:center">
+    <input type="submit" id="review_button" value="Submit a review"></input>
+    </div>
+  </form>
+
+</body>
+</html>

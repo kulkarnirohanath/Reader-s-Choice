@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Goodreads data search page</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <style>
+      html, body {
+      background: url(https://wallpapercave.com/wp/wp2046076.jpg);
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+      background-size:cover;
+      }
+      h1, h3 {
+        text-align: center;
+      }
+      #container {
+        text-align: center;
+      }
+      ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #333;
+}
+
+li {
+  float: left;
+}
+
+li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-style: italic;
+}
+
+li a:hover {
+  background-color: #111;
+}
+table.center {
+    margin-left:auto;
+    margin-right:auto;
+  }
+  h1, h3 {
+    color: #ffffff;
+    font-style: italic;
+    font-size: 2em;
+  }
+  th, td {
+    font-size: 1em;
+  }
+  p.center {
+    color: #ffffff;
+    font-style: italic;
+    font-weight: bolder;
+    margin-left: auto;
+    margin-right: auto;
+  }
+      </style>
+  </head>
+  <body>
+    <ul>
+  <li><a class="active" href="/search">Book Search</a></li>
+  <li><a href="/logout">Logout</a></li>
+</ul>
+    <div class="main-block">
+      <h1>Goodreads' data search page</h1><br><br><br>
+      <table style="width:50%" class="center table table-striped table-dark" style="font-size: 1em">
+  <tr>
+    <th>ID:</th>
+    <td>{{id}}</td>
+  </tr>
+  <tr>
+    <th>ISBN:</th>
+    <td>{{isbn}}</td>
+  </tr>
+  <tr>
+    <th>ISBN 13:</th>
+    <td>{{isbn13}}</td>
+  </tr>
+  <tr>
+    <th>Ratings count:</th>
+    <td>{{ratings_count}}</td>
+  </tr>
+  <tr>
+    <th>Reviews count:</th>
+    <td>{{reviews_count}}</td>
+  </tr>
+  <tr>
+    <th>Text reviews count:</th>
+    <td>{{text_reviews_count}}</td>
+  </tr>
+  <tr>
+    <th>Work ratings count:</th>
+    <td>{{work_ratings_count}}</td>
+  </tr>
+  <tr>
+    <th>Work reviews count:</th>
+    <td>{{work_reviews_count}}</td>
+  </tr>
+  <tr>
+    <th>Work text reviews count:</th>
+    <td>{{work_text_reviews_count}}</td>
+  </tr>
+  <tr>
+    <th>Average Rating:</th>
+    <td>{{average_rating}}</td>
+  </tr>
+</table>
+    </div>
+</body>
+</html>

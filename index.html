@@ -8,6 +8,31 @@
 
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-latest.min.js"></script>
+    <script>
+    $(document).ready(function(){
+      function registration_check()
+      {
+        var email = $('#r_email').val();
+        var username = $('#r_username').val();
+        var password = $('#r_password').val();
+        var confirmpassword = $('#r_c_password').val();
+        $('#login').onclick(function(){
+          $.ajax({
+            url: "/",
+            type: "post",
+            data: { email: r_email, username: r_username, password: r_password, confirmpassword: r_c_password }
+            success: function(response) {
+              $("#validation").html(response)
+            },
+            error: function() {
+              $("#validation").html(response)
+            }
+          });
+        });
+      }
+    });
+    </script>
     <style>
       html, body {
       display: flex;
@@ -142,30 +167,25 @@
       <form action="/" method="post">
         <hr>
         <label id="icon" for="name"><i class="fas fa-envelope"></i></label>
-        <input type="text" name="email" id="name" placeholder="Email" required/>
+        <input type="text" name="email" id="r_email" placeholder="Email" required/>
         <label id="icon" for="name"><i class="fas fa-user"></i></label>
-        <input type="text" name="username" id="name" placeholder="Username" required/>
+        <input type="text" name="username" id="r_username" placeholder="Username" required/>
         <label id="icon" for="name"><i class="fas fa-unlock-alt"></i></label>
-        <input type="password" name="password" id="name" placeholder="Password" required/>
+        <input type="password" name="password" id="r_password" placeholder="Password" required/>
         <label id="icon" for="name"><i class="fas fa-unlock-alt"></i></label>
-        <input type="password" name="confirmpassword" id="name" placeholder="Confirm Password" required/>
+        <input type="password" name="confirmpassword" id="r_c_password" placeholder="Confirm Password" required/>
         <hr><br>
-
+        <p style="color: #DC143C;" style="font-weight: bold;">{{wrong}}</p>
         <div class="btn-block">
           <button type="submit" href="/">Register</button>
         </div>
+        </form>
+        <form action="/login" method="get">
         <div class="btn-block">
-          <p>Already a member?</p>
+          <p id="validation">Already a member?</p>
           <button type="submit" id="login" href="/login">Login</button>
         </div>
-
       </form>
     </div>
-<script type="text/javascript">
-document.getElementById("login").onclick = function() {
-  location.href="http://127.0.0.1:5000/login";
-};
-</script>
-
 </body>
 </html>

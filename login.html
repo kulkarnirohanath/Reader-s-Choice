@@ -4,8 +4,31 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Reader's Choice Login</title>
+    <script src="https://code.jquery.com/jquery-latest.min.js"></script>
+    <script>
+    $(document).ready(function(){
+      function user_login_check()
+      {
+        var a_username = $('#username').val();
+        var a_password = $('#password').val();
+        $('#login').onclick(function(){
+          $.ajax({
+            url: "/login",
+            type: "post",
+            data: { username: a_username, password: a_password }
+            success: function(response) {
+              $("#validation").html(response)
+            },
+            error: function() {
+              $("#validation").html(response)
+            }
+          });
+        });
+      }
+    });
 
+    </script>
+    <title>Reader's Choice Login</title>
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
     <style>
@@ -142,24 +165,23 @@
       <form action="/login" method="post">
         <hr>
         <label id="icon" for="name"><i class="fas fa-user"></i></label>
-        <input type="text" name="username" id="name" placeholder="Username" required/>
+        <input type="text" name="username" id="username" placeholder="Username" required/>
         <label id="icon" for="name"><i class="fas fa-unlock-alt"></i></label>
-        <input type="password" name="password" id="name" placeholder="Password" required/>
-        <hr><br><br>
+        <input type="password" name="password" id="password" placeholder="Password" required/>
+        <hr>
+        <p style="color: #DC143C;" style="font-weight: bold;">{{wrong}}</p><br><br>
+        <div id="validation"></div>
         <div class="btn-block">
-          <button type="submit" href="/login">Login</button>
+          <button type="submit" id ="login" href="/login">Login</button>
         </div>
+        </form>
         <div class="btn-block">
           <p>Not a member?</p>
-          <button type="submit" id="register" href="/login">Register</button>
+          <form action="/" method="get">
+          <button type="submit" id="register" href="/">Register</button>
+        </form>
         </div>
-      </form>
-    </div>
-<script type="text/javascript">
-document.getElementById("register"). onclick = function() {
-  location.href="http://127.0.0.1:5000/";
-};
-</script>
 
+    </div>
 </body>
 </html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Oops An Error</title>
+
+  <style>
+      html, body {
+      background: url(https://assets.entrepreneur.com/content/3x2/2000/20191219170611-GettyImages-1152794789.jpeg);
+      background size: 100% 100%;
+      }
+
+      div.mistake {
+        text-align: center;
+      }
+
+    </style>
+<div class="mistake">
+  {% for name,value in data.items()%}
+<h1>{{name}}: {{value}}<br>
+  {% endfor%}
+</div>
+
+</body>
+</html>
